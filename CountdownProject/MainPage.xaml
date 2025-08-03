@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CountdownGame.MainPage"
+             Title="Countdown Game">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <Label Text="Countdown Game"
+                   FontSize="32"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+            <Label x:Name="TargetLabel"
+                   Text="Target: "
+                   FontSize="24"
+                   HorizontalOptions="Center" />
+
+            <Label x:Name="NumbersLabel"
+                   Text="Numbers: "
+                   FontSize="18"
+                   HorizontalOptions="Center" />
+
+            <Button Text="Generate"
+                    Clicked="OnGenerateClicked"
+                    HorizontalOptions="Center" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

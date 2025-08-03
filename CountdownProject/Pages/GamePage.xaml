@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CountdownProject.Pages.GamePage"
+             Title="Countdown">
+
+    <StackLayout Padding="30" Spacing="25" VerticalOptions="Center">
+        <Label x:Name="TimerLabel"
+               Text="30"
+               FontSize="40"
+               HorizontalOptions="Center"
+               TextColor="{StaticResource TimerColor}" />
+
+        <Label x:Name="LettersLabel"
+               Text="------"
+               FontSize="{StaticResource HeaderSize}"
+               HorizontalOptions="Center"
+               FontAttributes="Bold" />
+
+        <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+            <Button x:Name="VowelButton"
+                    Text="Vowel"
+                    Clicked="OnVowelClicked"
+                    BackgroundColor="{StaticResource PrimaryColor}"
+                    TextColor="White"
+                    Padding="15,5" />
+
+            <Button x:Name="ConsonantButton"
+                    Text="Consonant"
+                    Clicked="OnConsonantClicked"
+                    BackgroundColor="{StaticResource PrimaryColor}"
+                    TextColor="White"
+                    Padding="15,5" />
+        </HorizontalStackLayout>
+
+        <Button x:Name="StartButton"
+                Text="Start"
+                Clicked="OnStartClicked"
+                BackgroundColor="{StaticResource AccentColor}"
+                TextColor="Black"
+                HorizontalOptions="Center"
+                Padding="25,10" />
+    </StackLayout>
+
+</ContentPage>
