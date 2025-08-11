@@ -3,9 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CountdownProject.Pages.GamePage"
              Title="Countdown">
-
     <VerticalStackLayout Padding="20" Spacing="18">
-
         <Label x:Name="TimerLabel"
                Text="00:30"
                FontSize="32"
@@ -18,15 +16,9 @@
                HorizontalTextAlignment="Center" />
 
         <HorizontalStackLayout HorizontalOptions="Center" Spacing="12">
-            <Button x:Name="VowelButton"
-                    Text="Vowel"
-                    Clicked="OnVowelClicked" />
-            <Button x:Name="ConsonantButton"
-                    Text="Consonant"
-                    Clicked="OnConsonantClicked" />
-            <Button x:Name="ClearButton"
-                    Text="Clear"
-                    Clicked="OnClearClicked" />
+            <Button x:Name="VowelButton" Text="Vowel" Clicked="OnVowelClicked" />
+            <Button x:Name="ConsonantButton" Text="Consonant" Clicked="OnConsonantClicked" />
+            <Button x:Name="ClearButton" Text="Clear" Clicked="OnClearClicked" />
         </HorizontalStackLayout>
 
         <Button x:Name="StartButton"
@@ -37,16 +29,18 @@
 
         <Entry x:Name="AnswerEntry"
                Placeholder="Enter your word…"
-               FontSize="18" />
+               FontSize="18"
+               IsEnabled="False" />
 
-        <Button Text="Submit"
+        <Button x:Name="SubmitButton"
+                Text="Submit"
                 Clicked="OnSubmitClicked"
+                IsEnabled="False"
                 HorizontalOptions="Center" />
 
         <Label x:Name="ResultLabel"
                Text=""
                FontSize="16"
                HorizontalOptions="Center" />
-
     </VerticalStackLayout>
 </ContentPage>
