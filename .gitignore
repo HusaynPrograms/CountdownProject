@@ -1,0 +1,40 @@
+# Build results
+bin/
+obj/
+
+# Visual Studio cache/options
+.vs/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Temporary files
+*.cache
+*.log
+*.pdb
+*.db
+*.opendb
+*.vscode/
+
+# MAUI-specific generated files
+Platforms/Android/Resources/designtime/
+Platforms/iOS/Resources/designtime/
+
+# Backup and temp
+*~
+*.tmp
+*.bak
+*.swp
+
+# JetBrains Rider
+.idea/
+*.iml
+
+# Mac files
+.DS_Store
+
+# Windows thumbnails
+Thumbs.db

@@ -4,42 +4,49 @@
              x:Class="CountdownProject.Pages.GamePage"
              Title="Countdown">
 
-    <StackLayout Padding="30" Spacing="25" VerticalOptions="Center">
+    <VerticalStackLayout Padding="20" Spacing="18">
+
         <Label x:Name="TimerLabel"
-               Text="30"
-               FontSize="40"
-               HorizontalOptions="Center"
-               TextColor="{StaticResource TimerColor}" />
+               Text="00:30"
+               FontSize="32"
+               HorizontalOptions="Center" />
 
         <Label x:Name="LettersLabel"
-               Text="------"
-               FontSize="{StaticResource HeaderSize}"
+               Text="Pick 9 letters"
+               FontSize="26"
                HorizontalOptions="Center"
-               FontAttributes="Bold" />
+               HorizontalTextAlignment="Center" />
 
-        <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+        <HorizontalStackLayout HorizontalOptions="Center" Spacing="12">
             <Button x:Name="VowelButton"
                     Text="Vowel"
-                    Clicked="OnVowelClicked"
-                    BackgroundColor="{StaticResource PrimaryColor}"
-                    TextColor="White"
-                    Padding="15,5" />
-
+                    Clicked="OnVowelClicked" />
             <Button x:Name="ConsonantButton"
                     Text="Consonant"
-                    Clicked="OnConsonantClicked"
-                    BackgroundColor="{StaticResource PrimaryColor}"
-                    TextColor="White"
-                    Padding="15,5" />
+                    Clicked="OnConsonantClicked" />
+            <Button x:Name="ClearButton"
+                    Text="Clear"
+                    Clicked="OnClearClicked" />
         </HorizontalStackLayout>
 
         <Button x:Name="StartButton"
-                Text="Start"
+                Text="Start Round"
+                IsEnabled="False"
                 Clicked="OnStartClicked"
-                BackgroundColor="{StaticResource AccentColor}"
-                TextColor="Black"
-                HorizontalOptions="Center"
-                Padding="25,10" />
-    </StackLayout>
+                HorizontalOptions="Center" />
 
+        <Entry x:Name="AnswerEntry"
+               Placeholder="Enter your word…"
+               FontSize="18" />
+
+        <Button Text="Submit"
+                Clicked="OnSubmitClicked"
+                HorizontalOptions="Center" />
+
+        <Label x:Name="ResultLabel"
+               Text=""
+               FontSize="16"
+               HorizontalOptions="Center" />
+
+    </VerticalStackLayout>
 </ContentPage>

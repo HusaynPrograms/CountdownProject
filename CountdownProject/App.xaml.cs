@@ -1,12 +1,10 @@
-﻿namespace CountdownGame
-{
-    public partial class App : Application
-    {
-        public App()
-        {
-            InitializeComponent();
+﻿namespace CountdownProject;
 
-            MainPage = new AppShell();
-        }
+public partial class App : Application
+{
+    public App()
+    {
+        InitializeComponent();
+        MainPage = new AppShell(); // Loads the navigation shell
     }
 }
