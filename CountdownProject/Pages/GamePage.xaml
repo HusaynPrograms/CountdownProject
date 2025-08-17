@@ -2,45 +2,31 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CountdownProject.Pages.GamePage"
-             Title="Countdown">
-    <VerticalStackLayout Padding="20" Spacing="18">
+             Title="Countdown Game">
+
+    <VerticalStackLayout Padding="20" Spacing="15">
+
         <Label x:Name="TimerLabel"
                Text="00:30"
-               FontSize="32"
+               FontSize="28"
                HorizontalOptions="Center" />
 
-        <Label x:Name="LettersLabel"
-               Text="Pick 9 letters"
-               FontSize="26"
-               HorizontalOptions="Center"
-               HorizontalTextAlignment="Center" />
+        <HorizontalStackLayout x:Name="LettersLayout"
+                               Spacing="5"
+                               HorizontalOptions="Center" />
 
-        <HorizontalStackLayout HorizontalOptions="Center" Spacing="12">
-            <Button x:Name="VowelButton" Text="Vowel" Clicked="OnVowelClicked" />
-            <Button x:Name="ConsonantButton" Text="Consonant" Clicked="OnConsonantClicked" />
-            <Button x:Name="ClearButton" Text="Clear" Clicked="OnClearClicked" />
-        </HorizontalStackLayout>
+        <Entry x:Name="Player1Input"
+               Placeholder="Player 1 word" />
+        <Entry x:Name="Player2Input"
+               Placeholder="Player 2 word" />
 
-        <Button x:Name="StartButton"
-                Text="Start Round"
-                IsEnabled="False"
-                Clicked="OnStartClicked"
-                HorizontalOptions="Center" />
+        <Label x:Name="Player1Score"
+               Text="Player 1 Score: 0" />
+        <Label x:Name="Player2Score"
+               Text="Player 2 Score: 0" />
 
-        <Entry x:Name="AnswerEntry"
-               Placeholder="Enter your word…"
-               FontSize="18"
-               IsEnabled="False" />
+        <Button Text="Start Round" Clicked="OnStartClicked" />
+        <Button Text="Submit Words" Clicked="OnSubmitClicked" />
 
-        <Button x:Name="SubmitButton"
-                Text="Submit"
-                Clicked="OnSubmitClicked"
-                IsEnabled="False"
-                HorizontalOptions="Center" />
-
-        <Label x:Name="ResultLabel"
-               Text=""
-               FontSize="16"
-               HorizontalOptions="Center" />
     </VerticalStackLayout>
 </ContentPage>
