@@ -4,7 +4,7 @@
              x:Class="CountdownProject.Pages.GamePage"
              Title="Countdown Game">
 
-    <VerticalStackLayout Padding="20" Spacing="15">
+    <VerticalStackLayout Padding="20" Spacing="14">
 
         <Label x:Name="TimerLabel"
                Text="00:30"
@@ -12,21 +12,30 @@
                HorizontalOptions="Center" />
 
         <HorizontalStackLayout x:Name="LettersLayout"
-                               Spacing="5"
+                               Spacing="6"
                                HorizontalOptions="Center" />
 
-        <Entry x:Name="Player1Input"
-               Placeholder="Player 1 word" />
-        <Entry x:Name="Player2Input"
-               Placeholder="Player 2 word" />
+        <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+            <Button x:Name="VowelButton" Text="Vowel" Clicked="PickVowel" />
+            <Button x:Name="ConsonantButton" Text="Consonant" Clicked="PickConsonant" />
+            <Button x:Name="ClearLettersButton" Text="Clear Letters" Clicked="ClearLetters" />
+        </HorizontalStackLayout>
 
-        <Label x:Name="Player1Score"
-               Text="Player 1 Score: 0" />
-        <Label x:Name="Player2Score"
-               Text="Player 2 Score: 0" />
+        <Entry x:Name="Player1Input" Placeholder="Player 1 word" />
+        <Entry x:Name="Player2Input" Placeholder="Player 2 word" />
 
-        <Button Text="Start Round" Clicked="OnStartClicked" />
-        <Button Text="Submit Words" Clicked="OnSubmitClicked" />
+        <Label x:Name="Player1Score" Text="Player 1 Score: 0" />
+        <Label x:Name="Player2Score" Text="Player 2 Score: 0" />
+
+        <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+            <Button x:Name="StartButton" Text="Start Round" Clicked="StartRound" IsEnabled="False" />
+            <Button Text="Submit Words" Clicked="Submit" />
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+            <Button Text="Reset Round" Clicked="ResetRound" />
+            <Button Text="Reset Game" Clicked="ResetGame" />
+        </HorizontalStackLayout>
 
     </VerticalStackLayout>
 </ContentPage>
