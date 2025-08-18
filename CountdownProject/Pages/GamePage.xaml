@@ -6,6 +6,11 @@
 
     <VerticalStackLayout Padding="20" Spacing="14">
 
+        <Label x:Name="Header"
+               Text="Game"
+               FontSize="22"
+               HorizontalOptions="Center" />
+
         <Label x:Name="TimerLabel"
                Text="00:30"
                FontSize="28"

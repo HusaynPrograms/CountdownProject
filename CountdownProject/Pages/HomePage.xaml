@@ -1,15 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CountdownProject.Pages.HomePage"
              Title="Home">
 
-    <VerticalStackLayout Padding="30" Spacing="20">
-        <Label Text="Welcome to Countdown Project"
-               FontSize="24"
-               HorizontalOptions="Center" />
-        <Label Text="Navigate using the tabs below."
-               FontSize="18"
-               HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <VerticalStackLayout Padding="20" Spacing="14">
 
+        <Label Text="Countdown" FontSize="28" HorizontalOptions="Center" />
+
+        <Entry x:Name="P1Name" Placeholder="Player 1 name" />
+        <Entry x:Name="P2Name" Placeholder="Player 2 name" />
+
+        <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+            <Button Text="Save Names" Clicked="SaveNames" />
+            <Button Text="Go to Game" Clicked="GoGame" />
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+            <Button Text="History" Clicked="GoHistory" />
+            <Button Text="Settings" Clicked="GoSettings" />
+        </HorizontalStackLayout>
+
+        <Label x:Name="SavedMsg" Text="" HorizontalOptions="Center" />
+
+    </VerticalStackLayout>
 </ContentPage>

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Maui.Controls;
+using Microsoft.Maui.Storage;
 using CountdownProject.Services;
 
 namespace CountdownProject.Pages
@@ -56,7 +57,10 @@ namespace CountdownProject.Pages
         protected override async void OnAppearing()
         {
             base.OnAppearing();
+            Header.Text = $"{Preferences.Get("P1Name", "Player 1")} vs {Preferences.Get("P2Name", "Player 2")}";
             await DictionaryService.EnsureLoadedAsync();
+            Player1Score.Text = $"{Preferences.Get("P1Name", "Player 1")} Score: {p1Score}";
+            Player2Score.Text = $"{Preferences.Get("P2Name", "Player 2")} Score: {p2Score}";
         }
 
         static char[] MakePool(Dictionary<char, int> weights)
@@ -104,8 +108,9 @@ namespace CountdownProject.Pages
         {
             if (roundOn || letters.Count != 9) return;
 
-            timeLeft = 30;
-            TimerLabel.Text = "00:30";
+            timeLeft = Preferences.Get("TimeLimit", 30);
+            if (timeLeft < 10) timeLeft = 10;
+            TimerLabel.Text = $"00:{timeLeft:00}";
             roundOn = true;
 
             StartButton.IsEnabled = false;
@@ -135,6 +140,9 @@ namespace CountdownProject.Pages
 
             await DictionaryService.EnsureLoadedAsync();
 
+            var p1Name = Preferences.Get("P1Name", "Player 1");
+            var p2Name = Preferences.Get("P2Name", "Player 2");
+
             var p1Word = Player1Input.Text?.Trim().ToUpper() ?? "";
             var p2Word = Player2Input.Text?.Trim().ToUpper() ?? "";
 
@@ -153,19 +161,35 @@ namespace CountdownProject.Pages
             p1Score += p1Round;
             p2Score += p2Round;
 
-            Player1Score.Text = $"Player 1 Score: {p1Score}";
-            Player2Score.Text = $"Player 2 Score: {p2Score}";
+            Player1Score.Text = $"{p1Name} Score: {p1Score}";
+            Player2Score.Text = $"{p2Name} Score: {p2Score}";
 
             string p1Status = p1Word == "" ? "no word" : (p1Ok ? "valid word" : "not valid word");
             string p2Status = p2Word == "" ? "no word" : (p2Ok ? "valid word" : "not valid word");
 
-            string winner = (p1Round == p2Round) ? "Draw" : (p1Round > p2Round ? "Player 1" : "Player 2");
+            string winner = (p1Round == p2Round) ? "Draw" : (p1Round > p2Round ? p1Name : p2Name);
+
+            string lettersStr = new string(letters.ToArray());
+
+            await HistoryService.AddAsync(new Models.HistoryEntry
+            {
+                When = DateTime.Now,
+                Letters = lettersStr,
+                Player1 = p1Name,
+                Player2 = p2Name,
+                Word1 = p1Word,
+                Word2 = p2Word,
+                RoundScore1 = p1Round,
+                RoundScore2 = p2Round,
+                Total1 = p1Score,
+                Total2 = p2Score
+            });
 
             string msg =
-                $"Player 1: {(p1Word == "" ? "-" : p1Word)} • {p1Status} • +{p1Round}\n" +
-                $"Player 2: {(p2Word == "" ? "-" : p2Word)} • {p2Status} • +{p2Round}\n\n" +
+                $"{p1Name}: {(p1Word == "" ? "-" : p1Word)} • {p1Status} • +{p1Round}\n" +
+                $"{p2Name}: {(p2Word == "" ? "-" : p2Word)} • {p2Status} • +{p2Round}\n\n" +
                 $"Winner: {winner}\n" +
-                $"Totals — P1: {p1Score}  P2: {p2Score}";
+                $"Totals — {p1Name}: {p1Score}  {p2Name}: {p2Score}";
 
             await DisplayAlert("Round Result", msg, "OK");
         }
@@ -196,16 +220,16 @@ namespace CountdownProject.Pages
         {
             p1Score = 0;
             p2Score = 0;
-            Player1Score.Text = "Player 1 Score: 0";
-            Player2Score.Text = "Player 2 Score: 0";
+            Player1Score.Text = $"{Preferences.Get("P1Name", "Player 1")} Score: 0";
+            Player2Score.Text = $"{Preferences.Get("P2Name", "Player 2")} Score: 0";
             NewRound();
         }
 
         void NewRound()
         {
             roundOn = false;
-            timeLeft = 30;
-            TimerLabel.Text = "00:30";
+            timeLeft = Preferences.Get("TimeLimit", 30);
+            TimerLabel.Text = $"00:{timeLeft:00}";
             Player1Input.Text = "";
             Player2Input.Text = "";
             letters.Clear();

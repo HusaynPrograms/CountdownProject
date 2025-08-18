@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CountdownProject.Pages.SettingsPage"
+             Title="Settings">
+
+    <VerticalStackLayout Padding="20" Spacing="14">
+
+        <Label Text="Time limit (seconds)" />
+        <Picker x:Name="TimePicker">
+            <Picker.Items>
+                <x:String>20</x:String>
+                <x:String>30</x:String>
+                <x:String>45</x:String>
+                <x:String>60</x:String>
+            </Picker.Items>
+        </Picker>
+
+        <Label Text="Theme" />
+        <Picker x:Name="ThemePicker">
+            <Picker.Items>
+                <x:String>System</x:String>
+                <x:String>Light</x:String>
+                <x:String>Dark</x:String>
+            </Picker.Items>
+        </Picker>
+
+        <Button Text="Save" Clicked="Save" />
+
+        <Label x:Name="SavedMsg" Text="" HorizontalOptions="Center" />
+
+    </VerticalStackLayout>
+</ContentPage>

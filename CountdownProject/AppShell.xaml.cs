@@ -1,9 +1,12 @@
-﻿namespace CountdownProject;
+﻿using Microsoft.Maui.Controls;
 
-public partial class AppShell : Shell
+namespace CountdownProject
 {
-    public AppShell()
+    public partial class AppShell : Shell
     {
-        InitializeComponent();
+        public AppShell()
+        {
+            InitializeComponent();
+        }
     }
 }

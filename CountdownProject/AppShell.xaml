@@ -5,7 +5,11 @@
     xmlns:pages="clr-namespace:CountdownProject.Pages"
     x:Class="CountdownProject.AppShell">
 
-    <ShellContent
-        Title="Countdown Game"
-        ContentTemplate="{DataTemplate pages:GamePage}" />
+    <TabBar>
+        <ShellContent Title="Home" ContentTemplate="{DataTemplate pages:HomePage}" />
+        <ShellContent Title="Game" ContentTemplate="{DataTemplate pages:GamePage}" />
+        <ShellContent Title="History" ContentTemplate="{DataTemplate pages:HistoryPage}" />
+        <ShellContent Title="Settings" ContentTemplate="{DataTemplate pages:SettingsPage}" />
+    </TabBar>
+
 </Shell>
